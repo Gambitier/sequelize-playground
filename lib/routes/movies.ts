@@ -1,10 +1,12 @@
 import { Router } from 'express';
+import { Movie } from '../database/models/Movie';
 
 export const movies = Router();
 
 movies.post('/', async (req, res, next) => {
 	try {
-		res.sendStatus(200);
+		const movie = await Movie.create(req.body);
+		res.status(201).json(movie);
 	} catch (e) {
 		next(e);
 	}
