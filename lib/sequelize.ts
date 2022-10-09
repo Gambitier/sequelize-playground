@@ -4,5 +4,5 @@ export const sequelize = new Sequelize({
 	dialect: 'sqlite',
 	database: 'movies',
 	storage: ':memory:',
-	models: [__dirname + '/models'],
+	models: [__dirname + '/database/models'],
 });
