@@ -24,7 +24,13 @@ users.get('', async (req, res, next) => {
 
 users.get('/:id', async (req, res, next) => {
 	try {
-		res.sendStatus(200);
+		const { id } = req.params;
+		const user = await User.findOne({
+			where: {
+				id: id,
+			},
+		});
+		res.status(200).json(user);
 	} catch (e) {
 		next(e);
 	}
