@@ -15,9 +15,8 @@ users.post('/', async (req, res, next) => {
 
 users.get('', async (req, res, next) => {
 	try {
-		res.json({
-			name: 'Dangal',
-		});
+		const users = await User.findAll();
+		res.status(200).json(users);
 	} catch (e) {
 		next(e);
 	}
